@@ -1,0 +1,48 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+.row {
+    max-width: variables.$grid-width;
+    background-color: #eee;
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: variables.$gutter-vertical;
+    }
+
+    @include mixins.clearfix;
+
+    [class^='col-'] {
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: variables.$gutter-horizental;
+        }
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{variables.$gutter-horizental}) / 2);
+        
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{variables.$gutter-horizental}) / 3);
+    }
+
+    .col-2-of-3 {
+        width: calc(((100% - 2 * #{variables.$gutter-horizental}) / 3) * 2 + #{variables.$gutter-horizental});
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{variables.$gutter-horizental}) / 4);
+    }
+
+    .col-2-of-4 {
+        width: calc(((100% - 3 * #{variables.$gutter-horizental}) / 4) * 2 + #{variables.$gutter-horizental});
+    }
+
+    .col-3-of-4 {
+        width: calc(((100% - 3 * #{variables.$gutter-horizental}) / 4) * 3 + #{variables.$gutter-horizental} * 2);
+    }
+}
